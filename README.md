@@ -43,7 +43,10 @@ A cool application of Tortoise + GPT-3 (not affiliated with this repository): ht
 
 ### Local installation
 
-If you want to use this on your own computer, you must have an NVIDIA GPU.
+If you want to use this on your own Windows computer, life will be easier if you an NVIDIA GPU. I hear they come with free leather jackets these days.
+AMD GPU support is only for cards supported by ROCm. This will always work better on Linux.
+
+##NVIDIA
 
 On Windows, I **highly** recommend using the Conda installation method. I have been told that if you do not do this, you
 will spend a lot of time chasing dependency problems.
@@ -106,6 +109,27 @@ time python tortoise/do_tts.py \
     --preset ultra_fast \
     --voice geralt \
     --text "Time flies like an arrow; fruit flies like a bananna."
+```
+
+## AMD (Linux Command Line)
+
+Ubuntu 22.04.2 recommended, other distros [may work.](https://docs.amd.com/en/docs-5.5.0/release/gpu_os_support.html#supported-distributions0. 
+
+(yada yada)
+
+If you receive an error about CUDA being selected, but no CUDA device being found, you are running in CPU mode.
+While your virtual environment is active, run the command appropriate for your card.  Note that this may not be necessary.
+
+For RX 6800 up to RX 6950 XT
+
+```shell
+export HSA_OVERRIDE_GFX_VERSION=10.3.0
+```
+
+For RX 6600 up to RX 6750 (untested)
+
+```shell
+export HSA_OVERRIDE_GFX_VERSION=10.3.2
 ```
 
 ## Apple Silicon
